@@ -2,14 +2,29 @@ let playerScore = 0;
 let computerScore = 0;
 let round = 0;
 
+function startGame() {
+    let choice = prompt('One round or Best of Three? eg. Enter for 1 or 2 Wins');
+    game(choice);
+}  
+
+function game(num) { 
+    alert("You Ready!");  
+    if (num === '1') {
+      oneRound()
+    }
+    if(num === '2') {
+      bestOfThree();
+    }
+}
+
 function getPlayerMove() {
     let userChoice = prompt("Please enter your move").toLowerCase();
     if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
         return userChoice;
     } else {
-        console.log('Not a valid choice');
+        alert('Not a valid choice');
     }
-};
+}
 
 function computerPlay() {
     switch(Math.floor(Math.random()*3)) {
@@ -22,8 +37,8 @@ function computerPlay() {
       case 2:
         return 'paper';
         break;
-        };
-  };
+        }
+}
 
 function oneRound() {
     let playerSelection = getPlayerMove();
