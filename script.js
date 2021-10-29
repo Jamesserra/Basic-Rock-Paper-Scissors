@@ -18,7 +18,7 @@ function game(num) {
 }
 
 function getPlayerMove() {
-    let userChoice = prompt("Please enter your move").toLowerCase();
+    let userChoice = prompt("Choose Rock, Paper, or Scissors").toLowerCase();
     if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
         return userChoice;
     } else {
