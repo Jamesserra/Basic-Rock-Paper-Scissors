@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let round = 0;
 
 function getPlayerMove() {
     let userChoice = prompt("Please enter your move").toLowerCase();
@@ -24,38 +25,32 @@ function computerPlay() {
         };
   };
 
-function playRound(playerSelection, computerSelection) {
-    if(playerSelection === computerSelection) {
-        return 'It\'s a tie!';
-      } else if (playerSelection === 'rock') {
-        if (computerSelection === 'paper') {
-          computerScore++;
-          return 'Computer wins!';
-        } else {
-          playerScore++;
-          return 'You win!';
-        }
-      } else if (playerSelection === 'paper'){
-        if (computerSelection === 'scissors') {
-          computerScore++;
-          return 'Computer wins!';
-        } else {
-          playerScore++;
-          return 'You win!';
-        }
-      } else if (playerSelection === 'scissors') {
-        if (computerSelection === 'rock') {
-          computerScore++;
-          return 'Computer wins!';
-        } else {
-          playerScore++;
-          return 'You win!';
-        }
-      }
-};
+function oneRound() {
+    let playerSelection = getPlayerMove();
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+}
 
-const playerSelection = getPlayerMove();
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
-console.log("Your Score = " + playerScore);
-console.log("Computer Score = " + computerScore);
+function bestOfThree() {
+    let playerSelection = getPlayerMove();
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+}
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === "rock" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "rock") {
+        computerScore++;
+        round++;
+        alert("You Lose! " + computerSelection + " beats " + playerSelection);
+    }
+    if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper") {
+        playerScore++;
+        round++;
+        alert("You Win! " + playerSelection + " beats " + computerSelection);
+     }
+    if (playerSelection === computerSelection) {
+        round++;
+        alert("You Tie!");
+    }
+}
+
