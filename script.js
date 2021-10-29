@@ -29,12 +29,14 @@ function oneRound() {
     let playerSelection = getPlayerMove();
     let computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
+    scoreUpdate() 
 }
 
 function bestOfThree() {
     let playerSelection = getPlayerMove();
     let computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
+    scoreUpdate() 
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -54,3 +56,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function scoreUpdate() {
+    alert('Round ' + round + ' | User Score: ' + playerScore + ' | Computer Score: ' + computerScore);
+}
