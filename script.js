@@ -44,14 +44,32 @@ function oneRound() {
     let playerSelection = getPlayerMove();
     let computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
-    scoreUpdate() 
+    scoreUpdate();
+    if (computerScore === 1) {
+        alert("You Lost!");
+        playAgain();
+    } else if (playerScore === 1) {
+        alert("You Won!");
+        playAgain();
+    } else {
+        oneRound();
+    } 
 }
 
 function bestOfThree() {
     let playerSelection = getPlayerMove();
     let computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
-    scoreUpdate() 
+    scoreUpdate();
+    if (computerScore === 2) {
+        alert("You Lost!");
+        playAgain();
+    } else if (playerScore === 2) {
+        alert("You Won!");
+        playAgain();
+    } else {
+        bestOfThree();
+    } 
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -74,3 +92,18 @@ function playRound(playerSelection, computerSelection) {
 function scoreUpdate() {
     alert('Round ' + round + ' | User Score: ' + playerScore + ' | Computer Score: ' + computerScore);
 }
+
+function playAgain() {
+    let r = confirm("Play Again?");
+    if (r == true) {
+       playerScore = 0;
+       computerScore = 0;
+       round = 0;
+       startGame();
+    } else {
+      return;
+    }
+  }
+  
+  startGame();
+  
